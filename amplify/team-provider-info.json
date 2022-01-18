@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-reduxaws-dev-181922-authRole",
+      "UnauthRoleArn": "arn:aws:iam::640948627324:role/amplify-reduxaws-dev-181922-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::640948627324:role/amplify-reduxaws-dev-181922-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-reduxaws-dev-181922-deployment",
+      "UnauthRoleName": "amplify-reduxaws-dev-181922-unauthRole",
+      "StackName": "amplify-reduxaws-dev-181922",
+      "StackId": "arn:aws:cloudformation:us-west-2:640948627324:stack/amplify-reduxaws-dev-181922/bf99c5c0-76ca-11ec-9376-0a3dd718ad6b",
+      "AmplifyAppId": "d3vwxunh688vmk"
+    },
+    "categories": {
+      "auth": {
+        "reduxawsbfc50b2b": {}
+      }
+    }
+  }
+}
