@@ -58,25 +58,23 @@ class _LoginState extends State<Login> {
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Center(
-                    child: Container(
-                      alignment: Alignment.center,
-                      padding: EdgeInsets.all(40),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text("Redux",
-                              style: TextStyle(
-                                fontSize: 50,
-                              )),
-                          Text("AWS",
-                              style: TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 50,
-                              ))
-                        ],
-                      ),
+                  Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.all(40),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text("Redux",
+                            style: TextStyle(
+                              fontSize: 50,
+                            )),
+                        Text("AWS",
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 50,
+                            ))
+                      ],
                     ),
                   ),
                   Container(

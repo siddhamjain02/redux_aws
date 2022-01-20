@@ -19,53 +19,55 @@ class _HomeState extends State<Home> {
   @override
     Widget build(BuildContext context) {
       return MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: "hey there",
+
         home: Scaffold(
           appBar: AppBar(
-            flexibleSpace: Container(
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors: [
-                    Colors.blue,
-                    Colors.purple,
-                  ],
-                ),
-              ),
-              alignment: Alignment.bottomCenter,
-              child: Text(
-                "Hey! There",
-                style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
-              ),
-            ),
+            backgroundColor: Colors.red,
+            foregroundColor: Colors.red,
           ),
-          body: Center(
-            child: OutlinedButton(
-              onPressed: () {
-                logout();
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => Login()));
-              },
-              child: Text(
-                'Submit..',
-                style: TextStyle(
-                    fontSize: 30,
-                    foreground: Paint()
-                      ..shader = ui.Gradient.linear(
-                        const Offset(0, 0),
-                        const Offset(400, 0),
-                        <Color>[
-                          Colors.white,
-                          Colors.white,
-                        ],
-                      )),
-              ),
-            ),
+           body: Center(child: ElevatedButton(
+             style: ElevatedButton.styleFrom(
+               shape: const RoundedRectangleBorder(
+                   borderRadius: BorderRadius.all(Radius.circular(33))),
+               primary: Colors.white,
+               side: BorderSide(color: Colors.black, width: 2),
+             ),
+             onPressed: () {logout();
+               // StoreProvider.of<AppState>(context).dispatch(LogAction(
+               //     emailController.text, passwordController.text));
+               // Navigator.push(
+               //     context, MaterialPageRoute(builder: (_) => Home()));
+             },
+             child: Text('LOGOUT',
+                 style: TextStyle(
+                   color: Colors.red,
+                   fontSize: 40,
+                 )),
+           ),
+
+          //   child: OutlinedButton(
+          //     onPressed: () {
+          //       logout();
+          //       Navigator.push(
+          //           context, MaterialPageRoute(builder: (_) => Login()));
+          //     },
+          //     child: Text(
+          //       'Submit..',
+          //       style: TextStyle(
+          //           fontSize: 30,*-+
+          //           foreground: Paint()
+          //             ..shader = ui.Gradient.linear(
+          //               const Offset(0, 0),
+          //               const Offset(400, 0),
+          //               <Color>[
+          //                 Colors.white,
+          //                 Colors.white,
+          //               ],
+          //             )),
+          //     ),
+          //   ),
           ),
           drawer: Drawer(
             child: Center(child: Text('drawer')),
@@ -76,6 +78,7 @@ class _HomeState extends State<Home> {
     Future<void> logout() async {
       try {
         await Amplify.Auth.signOut();
+        Navigator.push(context, MaterialPageRoute(builder: (_) => Login()));
       } on AuthException catch (e) {
         print(e.message);
       }
