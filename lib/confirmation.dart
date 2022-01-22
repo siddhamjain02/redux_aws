@@ -28,7 +28,10 @@ class _ConfirmationState extends State<Confirmation> {
             confirmationCode: confirmationCodeController.text
         );
         if (res.isSignUpComplete = true) {
-          Navigator.pop(context);
+          // setState(() {
+          //   loading = false;
+          // });
+          Navigator.push(context,MaterialPageRoute(builder: (_) => Login()));
         }
       } on AuthException catch (e) {
         print(e.message);

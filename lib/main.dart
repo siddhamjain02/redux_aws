@@ -10,15 +10,21 @@ import 'package:redux_aws/login.dart';
 import 'amplifyconfiguration.dart';
 import 'redux/ex.dart';
 
+// cd /home/siddham/Downloads/platform-tools_r31.0.3-linux/platform-tools
+// ./adb pair 192.168.1.35:38805
+// ./adb connect 192.168.1.35:38805
+
 void main() {
   Store<AppState> _store =
   Store<AppState>(reducer, initialState: AppState.initialState(),);
   runApp(StoreProvider(store: _store,
-  child: App1()));
+      child: App1()));
 }
+
 bool jain = false;
 
 bool amplifyConfigured = false;
+
 class App1 extends StatefulWidget {
   const App1({Key? key}) : super(key: key);
 
@@ -28,33 +34,27 @@ class App1 extends StatefulWidget {
 
 
 class _App1State extends State<App1> {
-  @override
-
 
   Future<void> _configureAmplify() async {
     await Amplify.addPlugins([AmplifyAuthCognito()]);
     await Amplify.configure(amplifyconfig);
     final session = await Amplify.Auth.fetchAuthSession();
     jain = session.isSignedIn;
-    print("*******************jain=$jain*****************");
     setState(() {
       amplifyConfigured = true;
     });
-    print("*******************ampc=$amplifyConfigured*****************");
   }
 
   void initState() {
     super.initState();
     _configureAmplify();
-
   }
 
   Widget build(BuildContext context) {
-
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
-           body:amplifyConfigured?jain ? Home(): Login() :Loading()
+            body: amplifyConfigured ? jain ? Home() : Login() : Loading()
         ));
   }
 }
