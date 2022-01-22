@@ -21,7 +21,7 @@ void main() {
       child: App1()));
 }
 
-bool jain = false;
+bool logstate = false;
 
 bool amplifyConfigured = false;
 
@@ -39,7 +39,7 @@ class _App1State extends State<App1> {
     await Amplify.addPlugins([AmplifyAuthCognito()]);
     await Amplify.configure(amplifyconfig);
     final session = await Amplify.Auth.fetchAuthSession();
-    jain = session.isSignedIn;
+    logstate = session.isSignedIn;
     setState(() {
       amplifyConfigured = true;
     });
@@ -54,7 +54,7 @@ class _App1State extends State<App1> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-            body: amplifyConfigured ? jain ? Home() : Login() : Loading()
+            body: amplifyConfigured ? logstate ? Home() : Login() : Loading()
         ));
   }
 }
