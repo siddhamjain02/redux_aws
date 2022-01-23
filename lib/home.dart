@@ -78,7 +78,7 @@ class _HomeState extends State<Home> {
     Future<void> logout() async {
       try {
         await Amplify.Auth.signOut();
-        Navigator.push(context, MaterialPageRoute(builder: (_) => Login()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Login()));
       } on AuthException catch (e) {
         print(e.message);
       }

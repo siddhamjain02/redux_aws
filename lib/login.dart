@@ -35,10 +35,10 @@ class _LoginState extends State<Login> {
           password: passwordController.text,
         );
         if (res.isSignedIn = true) {
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Home()));
           setState(() {
             loading = false;
           });
-          Navigator.push(context, MaterialPageRoute(builder: (_) => Home()));
         }
       } catch (e) {
         setState(() {
@@ -69,6 +69,9 @@ class _LoginState extends State<Login> {
         if (res.isSignUpComplete = true) {
           Navigator.push(
               context, MaterialPageRoute(builder: (_) => Confirmation()));
+          setState(() {
+            loading = false;
+          });
         }
       } catch (e) {
         setState(() {
@@ -77,6 +80,10 @@ class _LoginState extends State<Login> {
         print("****************************");
         print(e);
         print("****************************");
+        final snackBar = SnackBar(
+          content: const Text("Try again"),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     }
 
@@ -173,6 +180,8 @@ class _LoginState extends State<Login> {
                               ),
                               onPressed: () {
                                 _login();
+                                emailController.clear();
+                                passwordController.clear();
                                 // StoreProvider.of<AppState>(context).dispatch(LogAction(
                                 //     emailController.text, passwordController.text));
                                 // Navigator.push(

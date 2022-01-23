@@ -31,7 +31,7 @@ class _ConfirmationState extends State<Confirmation> {
           // setState(() {
           //   loading = false;
           // });
-          Navigator.push(context,MaterialPageRoute(builder: (_) => Login()));
+          Navigator.pop(context);
         }
       } on AuthException catch (e) {
         print(e.message);
