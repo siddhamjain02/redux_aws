@@ -8,6 +8,7 @@ import 'package:redux_aws/home.dart';
 import 'package:redux_aws/redux/ex.dart';
 
 import 'login.dart';
+import 'redux/store.dart';
 
 TextEditingController confirmationCodeController = TextEditingController();
 
@@ -24,9 +25,7 @@ class _ConfirmationState extends State<Confirmation> {
     void _confirmSignUp() async {
       try {
         SignUpResult res = await Amplify.Auth.confirmSignUp(
-            username: email,
-            confirmationCode: confirmationCodeController.text
-        );
+            username: email, confirmationCode: confirmationCodeController.text);
         if (res.isSignUpComplete = true) {
           // setState(() {
           //   loading = false;
@@ -37,6 +36,7 @@ class _ConfirmationState extends State<Confirmation> {
         print(e.message);
       }
     }
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -96,7 +96,7 @@ class _ConfirmationState extends State<Confirmation> {
                     side: BorderSide(color: Colors.black, width: 2),
                   ),
                   onPressed: () {
-                   _confirmSignUp();
+                    _confirmSignUp();
                   },
                   child: Text('Submit',
                       style: TextStyle(

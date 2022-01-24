@@ -15,10 +15,11 @@ import 'redux/store.dart';
 // ./adb connect 192.168.1.35:38805
 
 void main() {
-  Store<AppState> _store =
-  Store<AppState>(reducer, initialState: AppState.initialState(),);
-  runApp(StoreProvider(store: _store,
-      child: App1()));
+  final Store<AppState> _store = Store<AppState>(
+    reducer,
+    initialState: AppState.initialState(),
+  );
+  runApp(StoreProvider(store: _store, child: App1()));
 }
 
 bool logstate = false;
@@ -32,9 +33,7 @@ class App1 extends StatefulWidget {
   _App1State createState() => _App1State();
 }
 
-
 class _App1State extends State<App1> {
-
   Future<void> _configureAmplify() async {
     await Amplify.addPlugins([AmplifyAuthCognito()]);
     await Amplify.configure(amplifyconfig);
@@ -53,8 +52,27 @@ class _App1State extends State<App1> {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Scaffold(
-            body: amplifyConfigured ? logstate ? Home() : Login() : Loading()
+        home: StoreConnector<AppState, AppState>(
+          converter: (Store<dynamic> store) => store.state,
+          builder: (BuildContext context, state) {
+            StoreProvider.of<AppState>(context).dispatch(
+              InitAction(amplifyConfigured),
+            );
+            StoreProvider.of<AppState>(context).dispatch(
+              LogAction(logstate),
+            );
+            // print(StoreProvider.of<AppState>(context).state.initialstate);
+            // print("********************");
+            // print(StoreProvider.of<AppState>(context).state.loginstate);
+            // print("**************************************************");
+
+            return Scaffold(
+                body: StoreProvider.of<AppState>(context).state.initialstate
+                    ? StoreProvider.of<AppState>(context).state.loginstate
+                        ? Home()
+                        : Login()
+                    : Loading());
+          },
         ));
   }
 }

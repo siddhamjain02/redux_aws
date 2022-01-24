@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:redux/redux.dart';
+import 'package:redux_aws/redux/store.dart';
+
+import 'home.dart';
+import 'login.dart';
+import 'main.dart';
 
 class Loading extends StatefulWidget {
   @override
