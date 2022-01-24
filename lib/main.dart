@@ -8,7 +8,7 @@ import 'package:redux_aws/home.dart';
 import 'package:redux_aws/loading.dart';
 import 'package:redux_aws/login.dart';
 import 'amplifyconfiguration.dart';
-import 'redux/ex.dart';
+import 'redux/store.dart';
 
 // cd /home/siddham/Downloads/platform-tools_r31.0.3-linux/platform-tools
 // ./adb pair 192.168.1.35:38805

@@ -5,7 +5,14 @@ class AppState {
   String get user => _user;
   String get pass => _pass;
 
-  AppState(this._user, this._pass);
+   AppState copyWith({
+  String? user
+}){
+     return AppState{
+       this._user; this._pass;
+     }
+
+}
 
   AppState.initialState() : _user = "", _pass = "";
 
