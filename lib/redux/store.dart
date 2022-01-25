@@ -1,9 +1,5 @@
-import 'dart:convert';
-import 'package:meta/meta.dart';
+import 'package:equatable/equatable.dart';
 
-//AppState
-
-@immutable
 class AppState {
   final bool initialstate;
   final bool loginstate;
@@ -19,13 +15,11 @@ class AppState {
         loginstate = false,
         loadingstate = false;
   AppState copyWith(
-      {bool initialstate = false,
-      bool loginstate = false,
-      bool loadingstate = false}) {
+      {bool? initialstate, bool? loginstate, bool? loadingstate}) {
     return AppState(
-      initialstate: initialstate,
-      loginstate: loginstate,
-      loadingstate: loadingstate,
+      initialstate: initialstate ?? this.initialstate,
+      loginstate: loginstate ?? this.loginstate,
+      loadingstate: loadingstate ?? this.loadingstate,
     );
   }
 }
@@ -54,11 +48,15 @@ class LoadingAction {
 
 AppState reducer(AppState prev, dynamic action) {
   if (action is LogAction) {
-    return prev.copyWith(loginstate: action.payload,initialstate: prev.initialstate,loadingstate: prev.loadingstate);
+    return prev.copyWith(
+      loginstate: action.payload,
+    );
   } else if (action is InitAction) {
-    return prev.copyWith(loginstate: prev.loginstate,initialstate: action.payload,loadingstate: prev.loadingstate);
+    return prev.copyWith(
+      initialstate: action.payload,
+    );
   } else if (action is LoadingAction) {
-    return prev.copyWith(loginstate: prev.loginstate,initialstate: prev.initialstate,loadingstate: action.payload);
+    return prev.copyWith(loadingstate: action.payload);
   } else {
     return prev;
   }

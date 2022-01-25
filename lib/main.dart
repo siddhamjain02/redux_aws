@@ -61,10 +61,10 @@ class _App1State extends State<App1> {
             StoreProvider.of<AppState>(context).dispatch(
               LogAction(logstate),
             );
-            // print(StoreProvider.of<AppState>(context).state.initialstate);
-            // print("********************");
-            // print(StoreProvider.of<AppState>(context).state.loginstate);
-            // print("**************************************************");
+            print(StoreProvider.of<AppState>(context).state.initialstate);
+            print("********************");
+            print(StoreProvider.of<AppState>(context).state.loginstate);
+            print("**************************************************");
 
             return Scaffold(
                 body: StoreProvider.of<AppState>(context).state.initialstate
