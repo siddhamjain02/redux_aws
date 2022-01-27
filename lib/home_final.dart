@@ -1,23 +1,14 @@
-import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
-import 'package:amplify_flutter/amplify.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:redux/redux.dart';
-import 'package:redux_aws/home.dart';
-import 'package:redux_aws/redux/store.dart';
-import 'login.dart';
-import 'redux/ex.dart';
-import 'dart:ui' as ui;
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+class HomeFinal extends StatefulWidget {
+  const HomeFinal({Key? key}) : super(key: key);
 
   @override
-  _HomeState createState() => _HomeState();
+  _HomeFinalState createState() => _HomeFinalState();
 }
 
-class _HomeState extends State<Home> {
-  @override
+class _HomeFinalState extends State<HomeFinal> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
@@ -134,15 +125,5 @@ class _HomeState extends State<Home> {
         onTap: _onItemTapped,
       ),
     );
-  }
-
-  Future<void> logout() async {
-    try {
-      await Amplify.Auth.signOut();
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (_) => Login()));
-    } on AuthException catch (e) {
-      print(e.message);
-    }
   }
 }

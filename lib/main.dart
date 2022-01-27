@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_aws/home.dart';
+import 'package:redux_aws/home_final.dart';
 import 'package:redux_aws/loading.dart';
 import 'package:redux_aws/login.dart';
 import 'amplifyconfiguration.dart';
@@ -50,6 +51,12 @@ class _App1State extends State<App1> {
   }
 
   Widget build(BuildContext context) {
+    // return MaterialApp(
+    //     theme: ThemeData(
+    //         primaryColor: Color(0xff5effe7),
+    //         backgroundColor: Color(0xffffffff)),
+    //     debugShowCheckedModeBanner: false,
+    //     home: HomeFinal());
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: StoreConnector<AppState, AppState>(
@@ -61,10 +68,10 @@ class _App1State extends State<App1> {
             StoreProvider.of<AppState>(context).dispatch(
               LogAction(logstate),
             );
-            print(StoreProvider.of<AppState>(context).state.initialstate);
-            print("********************");
-            print(StoreProvider.of<AppState>(context).state.loginstate);
-            print("**************************************************");
+            // print(StoreProvider.of<AppState>(context).state.initialstate);
+            // print("********************");
+            // print(StoreProvider.of<AppState>(context).state.loginstate);
+            // print("**************************************************");
 
             return Scaffold(
                 body: StoreProvider.of<AppState>(context).state.initialstate
